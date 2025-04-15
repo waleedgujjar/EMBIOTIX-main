@@ -9,7 +9,9 @@ import { Pagination } from "swiper/modules";
 import { motion } from "framer-motion";
 import { FaLinkedin } from "react-icons/fa";
 import Scroller2 from "@/assets/scroller2";
+
 export const runtime = "edge";
+
 export default function Teams() {
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef<SwiperClass | null>(null);
@@ -21,7 +23,8 @@ export default function Teams() {
       description:
         "Leading innovation and setting strategic direction for the company.",
       img: "/images/CEO.jpeg",
-      linkedin: "https://www.linkedin.com/in/ghufran-khan?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", // Replace with actual link
+      linkedin:
+        "https://www.linkedin.com/in/ghufran-khan?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     },
     {
       name: "Ahmad Nauman",
@@ -36,7 +39,8 @@ export default function Teams() {
       description:
         "Leads marketing strategies to grow brand visibility and drive customer engagement.",
       img: "/images/CMO.jpeg",
-      linkedin: "https://www.linkedin.com/in/muhmmad-asjad?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+      linkedin:
+        "https://www.linkedin.com/in/muhmmad-asjad?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
     },
     {
       name: "Humza Jaffar",
@@ -44,7 +48,8 @@ export default function Teams() {
       description:
         "Designs intuitive and engaging user experiences that blend aesthetics with functionality.",
       img: "/images/humza.jpg",
-      linkedin: "https://www.linkedin.com/in/humza-makhfi-85a5021ab?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+      linkedin:
+        "https://www.linkedin.com/in/humza-makhfi-85a5021ab?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
     },
   ];
 
@@ -54,7 +59,11 @@ export default function Teams() {
       className="bg-[#0f0f0f] md:px-[80px] md:pt-[60px] px-[40px] py-[30px]"
       id="team"
     >
-      <div className="flex flex-col justify-center items-center" data-aos="fade-up" data-aos-duration="3000">
+      <div
+        className="flex flex-col justify-center items-center"
+        data-aos="fade-up"
+        data-aos-duration="3000"
+      >
         <p className="w-[100px] h-[28px] flex justify-center items-center text-[#89f436] bg-[#171F05] border border-[#364C09] rounded-full text-[14px]">
           Our Team
         </p>
@@ -73,18 +82,15 @@ export default function Teams() {
           modules={[Pagination]}
           spaceBetween={30}
           slidesPerView={1}
-          loop={true}
-          initialSlide={0} // Always start from CEO
-          centeredSlides={true} // good for mobile
-          loopAdditionalSlides={teamMembers.length} // Ensures smooth looping
+          loop={false}
+          centeredSlides={false}
+          initialSlide={0}
           breakpoints={{
             768: {
               slidesPerView: 2,
-              centeredSlides: false, 
             },
             1200: {
               slidesPerView: 3,
-              centeredSlides: false, 
             },
           }}
           onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
@@ -98,11 +104,11 @@ export default function Teams() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ scale: 1.03 }}
-                className={`p-[20px] rounded-[10px] border flex flex-col gap-[24px] transition-all duration-300 ${
-                  index === activeIndex
-                    ? "border-white shadow-[0_0_20px_#89f43650]"
-                    : "border-[#333]"
-                }`}
+                className={`p-[20px] rounded-[10px] flex flex-col gap-[24px] transition-all duration-300
+                  ${index === activeIndex
+                    ? "border border-white shadow-[0_0_20px_#89f43650]"
+                    : "border border-[#333]"}
+                  hover:border-white hover:shadow-[0_0_20px_#89f43650]`}
               >
                 <div className="flex justify-center items-center">
                   <img
@@ -146,8 +152,8 @@ export default function Teams() {
       <div className="flex justify-center items-center mt-[32px]">
         <Scroller2
           activeIndex={activeIndex}
-          setActiveIndex={(activeIndex: number) =>
-            swiperRef?.current?.slideToLoop(activeIndex)
+          setActiveIndex={(index: number) =>
+            swiperRef?.current?.slideTo(index)
           }
         />
       </div>

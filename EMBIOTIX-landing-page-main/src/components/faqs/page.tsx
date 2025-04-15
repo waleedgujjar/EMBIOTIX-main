@@ -2,8 +2,10 @@
 import IconMinus from "@/assets/iconMinus";
 import IconPlus from "@/assets/iconPlus";
 import React, { useState } from "react";
+import Link from "next/link"; // Import Next.js Link component
 
 export const runtime = "edge";
+
 export default function Faqs() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
@@ -11,24 +13,23 @@ export default function Faqs() {
     {
       question: "What services do you offer?",
       answer:
-        "At Embiotix, we provide end-to-end technology solutions to help businesses innovate and scale. Our key services include:Embedded Systems Development,Network & Infrastructure Management,ata Services & AI Solutions,UI/UX Design,Web Development,Mobile Application Development"
+        "At Embiotix, we provide end-to-end technology solutions to help businesses innovate and scale. Our key services include: Embedded Systems Development, Network & Infrastructure Management, Data Services & AI Solutions, UI/UX Design, Web Development, Mobile Application Development"
     },
     {
       question: "How can AI & ML benefit my business?",
       answer:
-        "AI and machine learning can transform your business by:Automating repetitive tasks, reducing costs and human error.Enhancing decision-making with predictive analytics and real-time insights.Improving customer experiences through chatbots, recommendation engines, and personalization.Optimizing operations with intelligent monitoring in IoT, manufacturing, and logistics.At Embiotix, we tailor AI/ML solutions to your specific needs, ensuring measurable business impact.Scalable Architecture – Future-proofing your systems for growth."
+        "AI and machine learning can transform your business by: Automating repetitive tasks, reducing costs and human error. Enhancing decision-making with predictive analytics and real-time insights. Improving customer experiences through chatbots, recommendation engines, and personalization. Optimizing operations with intelligent monitoring in IoT, manufacturing, and logistics. At Embiotix, we tailor AI/ML solutions to your specific needs, ensuring measurable business impact. Scalable Architecture – Future-proofing your systems for growth."
     },
     {
       question: "Do you offer customized solutions?",
       answer:
-        "Absolutely! At Embiotix, we understand that every business has unique challenges. We specialize in custom-built solutions across embedded systems, AI, web, and mobile development. Our approach includes:Requirement Analysis – Understanding your goals and technical needs.Tailored Development – Designing solutions that align with your workflows."
+        "Absolutely! At Embiotix, we understand that every business has unique challenges. We specialize in custom-built solutions across embedded systems, AI, web, and mobile development. Our approach includes: Requirement Analysis – Understanding your goals and technical needs. Tailored Development – Designing solutions that align with your workflows."
     },
     {
       question: "What industries do you work with?",
       answer:
-        "We serve a diverse range of industries, including:Healthcare – IoT-enabled medical devices, AI diagnostics, and telemedicine solutions.Manufacturing & Industrial Automation – Embedded control systems and predictive maintenance.Smart Cities & Infrastructure – Network management, IoT sensors, and data-driven urban solutions.•	Retail & E-commerce – AI-driven analytics, inventory management, and personalized shopping experiences.Finance & FinTech – Secure transaction systems, fraud detection, and automated trading.Transportation & Logistics – Fleet management, route optimization, and real-time tracking.Our cross-industry expertise ensures we deliver innovative, scalable, and secure solutions tailored to your sector."
-    },
-
+        "We serve a diverse range of industries, including: Healthcare – IoT-enabled medical devices, AI diagnostics, and telemedicine solutions. Manufacturing & Industrial Automation – Embedded control systems and predictive maintenance. Smart Cities & Infrastructure – Network management, IoT sensors, and data-driven urban solutions. Retail & E-commerce – AI-driven analytics, inventory management, and personalized shopping experiences. Finance & FinTech – Secure transaction systems, fraud detection, and automated trading. Transportation & Logistics – Fleet management, route optimization, and real-time tracking. Our cross-industry expertise ensures we deliver innovative, scalable, and secure solutions tailored to your sector."
+    }
   ];
 
   return (
@@ -104,6 +105,7 @@ export default function Faqs() {
         ))}
       </div>
 
+      {/* Get in Touch Card */}
       <div
         data-aos="fade-right"
         data-aos-offset="300"
@@ -130,12 +132,16 @@ export default function Faqs() {
             friendly team.
           </p>
         </div>
-        <button
-          className="md:w-[123px] h-[40px] w-full bg-[#171f05] text-[16px] border border-[#364c09] text-[#89f436] rounded-[10px]"
-          style={{ fontFamily: "Melbourne" }}
-        >
-          Get in Touch
-        </button>
+
+        {/* Updated Button with Link to Contact Page */}
+        <Link href="#contact">
+          <button
+            className="md:w-[123px] h-[40px] w-full bg-[#171f05] text-[16px] border border-[#364c09] text-[#89f436] rounded-[10px] transition-all duration-300 hover:bg-transparent hover:text-[#171f05]"
+            style={{ fontFamily: "Melbourne" }}
+          >
+            Get in Touch
+          </button>
+        </Link>
       </div>
     </div>
   );
