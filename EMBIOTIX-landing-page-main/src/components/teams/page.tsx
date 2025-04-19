@@ -1,162 +1,140 @@
 "use client";
-
-import React, { useState, useRef } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Swiper as SwiperClass } from "swiper";
-import "swiper/css";
-import "swiper/css/pagination";
-import { Pagination } from "swiper/modules";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaLinkedin } from "react-icons/fa";
-import Scroller2 from "@/assets/scroller2";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
-export const runtime = "edge";
+const teamMembers = [
+  {
+    name: "Ghufran Khan",
+    role: "CEO",
+    description:
+      "Leading innovation and setting strategic direction for the company.",
+    img: "/images/CEO.jpeg",
+    linkedin: "https://www.linkedin.com/in/ghufran-khan",
+  },
+  {
+    name: "Ahmad Nauman",
+    role: "CTO",
+    description: "Designing intelligent systems that drive business growth.",
+    img: "/images/CTO.jpg",
+    linkedin: "#",
+  },
+  {
+    name: "Muhammad Asjad",
+    role: "CMO",
+    description:
+      "Leads marketing strategies to grow brand visibility and drive customer engagement.",
+    img: "/images/CMO.jpeg",
+    linkedin: "https://www.linkedin.com/in/muhmmad-asjad",
+  },
+  {
+    name: "Humza Jaffar",
+    role: "UI/UX Lead",
+    description:
+      "Designs intuitive and engaging user experiences that blend aesthetics with functionality.",
+    img: "/images/humza.jpg",
+    linkedin: "https://www.linkedin.com/in/humza-makhfi-85a5021ab",
+  },
+];
 
-export default function Teams() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const swiperRef = useRef<SwiperClass | null>(null);
-
-  const teamMembers = [
-    {
-      name: "Ghufran Khan",
-      role: "CEO",
-      description:
-        "Leading innovation and setting strategic direction for the company.",
-      img: "/images/CEO.jpeg",
-      linkedin:
-        "https://www.linkedin.com/in/ghufran-khan?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    },
-    {
-      name: "Ahmad Nauman",
-      role: "CTO",
-      description: "Designing intelligent systems that drive business growth.",
-      img: "/images/CTO.jpg",
-      linkedin: "#",
-    },
-    {
-      name: "Muhammad Asjad",
-      role: "CMO",
-      description:
-        "Leads marketing strategies to grow brand visibility and drive customer engagement.",
-      img: "/images/CMO.jpeg",
-      linkedin:
-        "https://www.linkedin.com/in/muhmmad-asjad?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
-    },
-    {
-      name: "Humza Jaffar",
-      role: "UI/UX Lead",
-      description:
-        "Designs intuitive and engaging user experiences that blend aesthetics with functionality.",
-      img: "/images/humza.jpg",
-      linkedin:
-        "https://www.linkedin.com/in/humza-makhfi-85a5021ab?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
-    },
-  ];
+export default function TeamSection() {
+  const [selected, setSelected] = useState<null | typeof teamMembers[0]>(null);
 
   return (
-    <div
-      data-aos="fade-up"
-      className="bg-[#0f0f0f] md:px-[80px] md:pt-[60px] px-[40px] py-[30px]"
-      id="team"
-    >
-      <div
-        className="flex flex-col justify-center items-center"
-        data-aos="fade-up"
-        data-aos-duration="3000"
+    <div className="bg-[#0f0f0f] px-6 py-12 md:px-16" id="team">
+      <h2 className="text-white text-3xl md:text-4xl text-center mb-8">
+        Meet Our Expert Team
+      </h2>
+
+      <Swiper
+        modules={[Navigation, Pagination]}
+        spaceBetween={20}
+        slidesPerView={1}
+        navigation
+        pagination={{ clickable: true }}
+        breakpoints={{
+          640: { slidesPerView: 1 },
+          768: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 },
+          1280: { slidesPerView: 4 },
+        }}
+        className="team-carousel"
       >
-        <p className="w-[100px] h-[28px] flex justify-center items-center text-[#89f436] bg-[#171F05] border border-[#364C09] rounded-full text-[14px]">
-          Our Team
-        </p>
-        <p className="text-white mt-[12px] text-[24px] md:text-[34px] lg:text-[40px] text-center">
-          Meet Our Expert Team
-        </p>
-        <p className="text-[#7a7b7a] md:text-[20px] text-[16px] mt-[20px] text-center max-w-[768px]">
-          Passionate professionals dedicated to building smarter digital solutions.
-        </p>
-      </div>
+        {teamMembers.map((member, idx) => (
+          <SwiperSlide key={idx}>
+            <div
+              className="relative group cursor-pointer rounded-2xl overflow-hidden shadow-md hover:shadow-[0_0_20px_#89f43650] transition-all duration-300 w-full h-[350px]"
+              onMouseEnter={() => setSelected(member)}
+              onMouseLeave={() => setSelected(null)}
+              onClick={() => setSelected(member)}
+            >
+              <img
+                src={member.img}
+                alt={member.name}
+                className="w-full h-full object-cover object-top transition-all duration-300 group-hover:scale-110 group-hover:blur-sm"
+              />
+              <div className="absolute inset-0 bg-black/60 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center text-center px-4">
+                <p className="text-white text-xl font-semibold mb-1">
+                  {member.name}
+                </p>
+                <p className="text-[#89f436] text-sm font-medium">
+                  {member.role}
+                </p>
+                <p className="text-[#b9b3b3] text-xs mt-2">
+                  {member.description}
+                </p>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
-      {/* Carousel Section */}
-      <div className="mt-[40px]">
-        <Swiper
-          pagination={false}
-          modules={[Pagination]}
-          spaceBetween={30}
-          slidesPerView={1}
-          loop={false}
-          centeredSlides={false}
-          initialSlide={0}
-          breakpoints={{
-            768: {
-              slidesPerView: 2,
-            },
-            1200: {
-              slidesPerView: 3,
-            },
-          }}
-          onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-          onSwiper={(swiper) => (swiperRef.current = swiper)}
-          className="mySwiper"
-        >
-          {teamMembers.map((member, index) => (
-            <SwiperSlide key={index} className="flex justify-center">
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ scale: 1.03 }}
-                className={`p-[20px] rounded-[10px] flex flex-col gap-[24px] transition-all duration-300
-                  ${index === activeIndex
-                    ? "border border-white shadow-[0_0_20px_#89f43650]"
-                    : "border border-[#333]"}
-                  hover:border-white hover:shadow-[0_0_20px_#89f43650]`}
-              >
-                <div className="flex justify-center items-center">
-                  <img
-                    src={member.img}
-                    alt={`${member.name} Background`}
-                    className="rounded-lg object-cover w-[250px] h-[250px]"
-                  />
-                </div>
-                <div className="flex flex-col gap-[20px]">
-                  <button className="w-[80px] h-[28px] flex justify-center items-center text-[#89f436] bg-[#171F05] border border-[#364C09] rounded-[6px] text-[14px]">
-                    Team
-                  </button>
-                  <div className="flex flex-col gap-[6px]">
-                    <p className="text-white text-[20px] leading-[28px]">
-                      {member.name}
-                    </p>
-                    <p className="text-[#89f436] text-[14px]">{member.role}</p>
-                    <p className="text-[#b9b3b3] text-[16px]">
-                      {member.description}
-                    </p>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <p className="text-white text-[14px]">{member.name}</p>
-                    <a
-                      href={member.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[#89f436] hover:text-white transition"
-                    >
-                      <FaLinkedin size={22} />
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-
-      {/* Scroller */}
-      <div className="flex justify-center items-center mt-[32px]">
-        <Scroller2
-          activeIndex={activeIndex}
-          setActiveIndex={(index: number) =>
-            swiperRef?.current?.slideTo(index)
-          }
-        />
-      </div>
+      <AnimatePresence>
+        {selected && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+            onClick={() => setSelected(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.8 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-[#0f0f0f] rounded-xl p-6 w-full max-w-md text-white border border-[#364C09] shadow-[0_0_20px_#89f43650]"
+            >
+              <div className="flex flex-col items-center gap-4">
+                <img
+                  src={selected.img}
+                  alt={selected.name}
+                  className="w-[200px] h-[200px] object-cover object-top rounded-full border-4 border-[#171F05]"
+                />
+                <span className="text-[#89f436] bg-[#171F05] px-3 py-1 text-sm rounded-full border border-[#364C09]">
+                  Team
+                </span>
+                <h3 className="text-2xl font-bold">{selected.name}</h3>
+                <p className="text-[#89f436] font-medium">{selected.role}</p>
+                <p className="text-[#b9b3b3] text-center">{selected.description}</p>
+                <a
+                  href={selected.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#89f436] hover:text-white mt-2"
+                >
+                  <FaLinkedin size={24} />
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

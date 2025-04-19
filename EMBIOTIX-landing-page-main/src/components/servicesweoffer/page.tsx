@@ -19,42 +19,42 @@ export default function Services() {
     {
       title: "Embedded Systems Development",
       description:
-        "We design and develop cutting-edge embedded systems that offer high performance, reliability, and efficiency, enabling seamless integration.",
+        "We specialize in the design and development of advanced embedded systems tailored to meet the demands of modern industries. Our solutions are engineered for high performance, low power consumption, and robust reliability.",
       image: "/images/softwaredevelopmentlogo.png",
       alt: "Software Development",
     },
     {
-      title: "Network & IT Infrastructure Management",
+      title: "IT & Network Management",
       description:
-        "We deliver robust, scalable network and IT infrastructure solutions that ensure seamless connectivity, high availability, and secure data management.",
+        "We provide comprehensive and scalable network and IT infrastructure solutions that are designed to meet the growing demands of modern businesses. Our services include the deployment of high-performance networks, server architecture.",
       image: "/images/aidevelopmentlogo.png",
       alt: "AI Development",
     },
     {
       title: "Data Science & AI Solutions",
       description:
-        "We harness the power of data and AI to deliver actionable insights and intelligent solutions, enabling businesses to make data-driven decisions, optimize processes.",
+        "We leverage the transformative potential of data science and artificial intelligence to provide organizations with actionable insights that drive decision-making and business growth. By combining advanced machine learning algorithms.",
       image: "/images/machinelearninglogo.png",
       alt: "Machine Learning",
     },
     {
       title: "Mobile app development",
       description:
-        "We create innovative, user-friendly mobile apps that drive engagement and deliver seamless experiences across all devices.",
+        "We specialize in creating cutting-edge, user-centric mobile applications that prioritize both innovation and ease of use. Our mobile apps are designed to offer seamless, intuitive experiences, ensuring users can effortlessly interact with your brand across any platform or device.",
       image: "/images/digitalmarketinglogo.png",
       alt: "Digital Marketing",
     },
     {
       title: "Web Development",
       description:
-        "We build scalable, custom web solutions, from sleek landing pages to complex web applications, that power modern business growth.",
+        "We specialize in developing scalable, custom web solutions that cater to the unique needs of your business, helping you grow and succeed in a fast-paced digital landscape. Whether you're looking for a sleek, high-converting landing page or a feature-rich, complex web application.",
       image: "/images/cloudcomputinglogo.png",
       alt: "Cloud Computing",
     },
     {
       title: "UI/UX design",
       description:
-        "We design intuitive, user-focused interfaces that blend seamless functionality with modern aesthetics.",
+        "We craft intuitive, user-centered UI/UX designs that prioritize clarity, accessibility, and visual appeal. Our design process begins with a deep understanding of user behavior, goals, and pain points to create experiences that are not only beautiful but also highly functional",
       image: "/images/uiuxlogo.png",
       alt: "UI/UX Design",
     },
@@ -94,23 +94,17 @@ export default function Services() {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
             viewport={{ once: true, amount: 0.2 }}
-            className="group bg-[#161616] border border-[#333] p-[32px] flex flex-col gap-[24px] rounded-[12px] shadow-md transition-all duration-500 hover:shadow-[0_8px_30px_rgba(137,244,54,0.3)]"
+            className="group cursor-pointer bg-[#161616] border border-[#333] p-[32px] flex flex-col gap-[24px] rounded-[12px] shadow-md min-h-[400px] transition-all duration-500"
           >
-            <motion.img
+            <img
               src={service.image}
               alt={service.alt}
-              className="w-[64px] h-[64px]"
-              whileHover={{ scale: 1.1 }}
-              transition={{ duration: 0.3 }}
+              className="w-[64px] h-[64px] transition-transform duration-300 group-hover:scale-110"
             />
             <div className="flex flex-col gap-[10px]">
-              <motion.p
-                className="text-white text-[24px] font-normal"
-                whileHover={{ color: "#89f436" }}
-                transition={{ duration: 0.3 }}
-              >
+              <p className="text-white text-[24px] font-normal group-hover:text-[#89f436] transition-colors duration-300">
                 {service.title}
-              </motion.p>
+              </p>
               <p className="text-[#b9b3b3] text-[16px] font-normal">
                 {service.description}
               </p>
@@ -124,7 +118,7 @@ export default function Services() {
         <Swiper
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           modules={[Navigation]}
-          spaceBetween={16}
+          spaceBetween={0} // removed spacing between slides
           slidesPerView={1}
           loop={true}
           breakpoints={{
@@ -141,23 +135,17 @@ export default function Services() {
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
                 viewport={{ once: true, amount: 0.2 }}
-                className="bg-[#161616] border border-[#333] p-[32px] flex flex-col gap-[24px] rounded-[12px] shadow-md transition-all duration-500 hover:shadow-[0_8px_30px_rgba(137,244,54,0.3)]"
+                className="cursor-pointer bg-[#161616] border border-[#333] p-[32px] flex flex-col gap-[24px] rounded-[12px] shadow-md min-h-[400px] transition-all duration-500"
               >
-                <motion.img
+                <img
                   src={service.image}
                   alt={service.alt}
-                  className="w-[64px] h-[64px]"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.3 }}
+                  className="w-[64px] h-[64px] transition-transform duration-300 hover:scale-110"
                 />
                 <div className="flex flex-col gap-[10px]">
-                  <motion.p
-                    className="text-white text-[24px] font-normal"
-                    whileHover={{ color: "#89f436" }}
-                    transition={{ duration: 0.3 }}
-                  >
+                  <p className="text-white text-[24px] font-normal hover:text-[#89f436] transition-colors duration-300">
                     {service.title}
-                  </motion.p>
+                  </p>
                   <p className="text-[#b9b3b3] text-[16px] font-normal">
                     {service.description}
                   </p>
@@ -190,4 +178,3 @@ export default function Services() {
     </div>
   );
 }
-

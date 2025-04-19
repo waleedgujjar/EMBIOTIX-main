@@ -2,7 +2,7 @@
 import IconMinus from "@/assets/iconMinus";
 import IconPlus from "@/assets/iconPlus";
 import React, { useState } from "react";
-import Link from "next/link"; // Import Next.js Link component
+import Link from "next/link";
 
 export const runtime = "edge";
 
@@ -33,16 +33,8 @@ export default function Faqs() {
   ];
 
   return (
-    <div
-      data-aos="fade-up"
-      className="bg-[#0f0f0f] md:px-[80px] md:py-[60px] px-[40px] py-[30px] flex flex-col gap-[40px]"
-    >
-      <div
-        data-aos="fade-right"
-        data-aos-offset="300"
-        data-aos-easing="ease-in-sine"
-        className="flex flex-col justify-center items-center"
-      >
+    <div className="bg-[#0f0f0f] md:px-[80px] md:py-[60px] px-[40px] py-[30px] flex flex-col gap-[40px]">
+      <div className="flex flex-col justify-center items-center">
         <p
           className="w-[52px] h-[28px] flex justify-center items-center text-[#89f436] bg-[#171F05] border border-[#364C09] rounded-full text-[14px]"
           style={{ fontFamily: "Melbourne" }}
@@ -65,13 +57,7 @@ export default function Faqs() {
 
       <div className="flex flex-col justify-center gap-8 lg:px-[256px]">
         {faqData.map((faq, index) => (
-          <div
-            data-aos="fade-right"
-            data-aos-offset="300"
-            data-aos-easing="ease-in-sine"
-            key={index}
-            className="flex flex-col"
-          >
+          <div key={index} className="flex flex-col">
             {index !== 0 && <hr className="bg-[#333] h-[1px] border-none" />}
             <div className="mt-6 flex justify-between">
               <p
@@ -106,12 +92,7 @@ export default function Faqs() {
       </div>
 
       {/* Get in Touch Card */}
-      <div
-        data-aos="fade-right"
-        data-aos-offset="300"
-        data-aos-easing="ease-in-sine"
-        className="bg-[#e6ffcd] flex flex-col gap-[32px] py-[24px] px-[32px] items-center rounded-[10px]"
-      >
+      <div className="bg-[#e6ffcd] flex flex-col gap-[32px] py-[24px] px-[32px] items-center rounded-[10px]">
         <img
           src="/images/Avatargroup.png"
           alt="Avatar Group"
@@ -133,10 +114,9 @@ export default function Faqs() {
           </p>
         </div>
 
-        {/* Updated Button with Link to Contact Page */}
         <Link href="#contact">
           <button
-            className="md:w-[123px] h-[40px] w-full bg-[#171f05] text-[16px] border border-[#364c09] text-[#89f436] rounded-[10px] transition-all duration-300 hover:bg-transparent hover:text-[#171f05]"
+            className="md:w-[123px] h-[40px] w-full bg-[#171f05] text-[16px] border border-[#364c09] text-[#89f436] rounded-[10px] hover:bg-transparent hover:text-[#171f05]"
             style={{ fontFamily: "Melbourne" }}
           >
             Get in Touch

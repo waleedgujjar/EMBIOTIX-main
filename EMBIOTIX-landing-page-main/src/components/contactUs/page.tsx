@@ -4,14 +4,10 @@ export const runtime = "edge";
 export default function ContactForm() {
   return (
     <div
-    id="contact"
-      data-aos="fade-up"
+      id="contact"
       className="md:p-[80px] p-[40px] bg-[#0f0f0f] flex lg:flex-row flex-col gap-[40px] xl:justify-around items-center justify-center"
     >
-      <div
-        data-aos="flip-left"
-        className="flex flex-col gap-[24px] md:w-[540px] w-full"
-      >
+      <div className="flex flex-col gap-[24px] md:w-[540px] w-full">
         <p
           className="md:text-[48px] text-[30px] text-white md:text-left text-center"
           style={{ fontFamily: "Melbourne" }}
@@ -25,10 +21,7 @@ export default function ContactForm() {
           Join the first wave of startups growing with us.
         </p>
       </div>
-      <div
-        data-aos="flip-right"
-        className="relative md:w-[700px] sm:w-[500px] w-[300px]"
-      >
+      <div className="relative md:w-[700px] sm:w-[500px] w-[300px]">
         <div className="absolute md:top-8 md:right-8 sm:top-5 sm:right-5 top-1 right-1 rounded-[40px] border border-[#333] bg-[#0f0f0f] p-[40px] w-full h-full"></div>
         <div
           className="relative text-white rounded-[40px] border border-[#333] bg-[#0f0f0f] p-[40px] flex flex-col gap-[15px]"
@@ -76,11 +69,11 @@ export default function ContactForm() {
             />
           </div>
           <div>
-          <button
-  className="bg-[#89f436] text-black w-full py-[10.5px] rounded-[6px] transition-all duration-300 ease-in-out hover:scale-105 hover:translate-y-[-5px] hover:bg-[#171F05] hover:text-[#89f436] active:bg-[#364C09] active:scale-100"
->
-  Send Message
-</button>
+            <button
+              className="bg-[#89f436] text-black w-full py-[10.5px] rounded-[6px] hover:bg-[#171F05] hover:text-[#89f436] active:bg-[#364C09]"
+            >
+              Send Message
+            </button>
           </div>
         </div>
       </div>
