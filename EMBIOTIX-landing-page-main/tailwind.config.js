@@ -35,6 +35,13 @@ module.exports = {
       "2xl": { min: "1536px" },
       // => @media (min-width: 1536px) { ... }
     },
+    extend: {
+      perspective: {
+        '1000': '1000px',
+      },
+      transform: ['hover'],
+    },
+    
   },
   plugins: [],
 };

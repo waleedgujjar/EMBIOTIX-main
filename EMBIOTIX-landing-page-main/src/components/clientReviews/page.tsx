@@ -17,9 +17,9 @@ export default function ClientReviews() {
 
   const client_reviews = [
     {
-      name: "Charlotte",
+      name: "Alfredo Lubin",
       description:
-        "“Collaborating with Embiotix was like gaining an internal development team. They genuinely invested time to grasp our exact requirements.”",
+        "“Working with Embiotix felt like having an in-house tech team. They really took the time to understand what we needed.”",
       img: "/images/customer1.png",
     },
     {
@@ -51,51 +51,44 @@ export default function ClientReviews() {
         </p>
       </div>
 
+      {/* Swiper Carousel */}
       <div className="mt-[40px]">
         <Swiper
           pagination={false}
           modules={[Pagination]}
-          spaceBetween={20}
+          spaceBetween={30}
           slidesPerView={1}
-          loop={true}
-          grabCursor={true}
           centeredSlides={true}
+          initialSlide={2}
+          loop={true}
           breakpoints={{
             768: { slidesPerView: 2, centeredSlides: false },
             1200: { slidesPerView: 3, centeredSlides: true },
           }}
           onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
           onSwiper={(swiper) => (swiperRef.current = swiper)}
-          className="transition-transform duration-500 ease-in-out"
+          className="mySwiper"
         >
           {client_reviews.map((review, index) => (
-            <SwiperSlide
-              key={index}
-              className={`flex justify-center transition-all duration-500 ease-in-out transform ${
-                index === activeIndex ? "scale-100 opacity-100" : "scale-90 opacity-50"
-              }`}
-            >
+            <SwiperSlide key={index} className="flex justify-center">
               <div
-                className={`p-[24px] md:h-[357px] h-[300px] w-full max-w-[360px] rounded-[10px] border border-[#333] rounded-tl-[40px] rounded-br-[40px] shadow-md transition-colors duration-500 ${
+                className={`p-[24px] md:h-[357px] h-[300px] rounded-[10px] border border-[#333] rounded-tl-[40px] rounded-br-[40px] ${
                   index === activeIndex ? "bg-[#e6ffcd]" : "bg-[#161616]"
                 }`}
               >
                 <div className="flex gap-[6px]">
-                  <img src={review?.img} alt="Customer Image" className="w-[50px] h-[50px] rounded-full" />
+                  <img src={review.img} alt="Customer Image" />
                   <div className="flex flex-col gap-[6px]">
                     <p
-                      className={`md:text-[24px] text-[16px] font-semibold ${
+                      className={`md:text-[24px] text-[16px] ${
                         index === activeIndex ? "text-[#000]" : "text-[#fff]"
                       }`}
                     >
-                      {review?.name}
+                      {review.name}
                     </p>
                     <div className="flex">
                       {[...Array(5)].map((_, i) => (
-                        <ReviewStars
-                          key={i}
-                          className={`${index === activeIndex ? "opacity-100" : "opacity-70"}`}
-                        />
+                        <ReviewStars key={i} />
                       ))}
                     </div>
                   </div>
@@ -106,7 +99,7 @@ export default function ClientReviews() {
                       index === activeIndex ? "text-[#000]" : "text-[#fff]"
                     }`}
                   >
-                    {review?.description}
+                    {review.description}
                   </p>
                   <div className="flex justify-end">
                     <QuoteRight />
@@ -118,6 +111,7 @@ export default function ClientReviews() {
         </Swiper>
       </div>
 
+      {/* Custom Scroller for Bullet Navigation */}
       <div className="flex justify-center items-center mt-[32px]">
         <Scroller2
           activeIndex={activeIndex}

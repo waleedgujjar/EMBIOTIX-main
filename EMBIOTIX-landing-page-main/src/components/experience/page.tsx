@@ -40,15 +40,16 @@ export default function Experience() {
 
         {/* Desktop Button */}
         <div className="md:block hidden">
-          <a href="#services">
-            <button
-              className="bg-[#171F05] border border-[#364C09] text-[#89f436] text-[16px] w-[152px] h-[40px] rounded-[6px] transition-all duration-300 hover:bg-transparent hover:text-[#89f436]"
-              style={{ fontFamily: "Melbourne" }}
-            >
-              Explore Services
-            </button>
-          </a>
-        </div>
+  <a href="#services">
+    <button
+      className="bg-[#171F05] border border-[#364C09] text-[#89f436] text-[16px] w-[152px] h-[40px] rounded-[6px] transition-all duration-300 hover:bg-transparent hover:text-black"
+      style={{ fontFamily: "Melbourne" }}
+    >
+      Explore Services
+    </button>
+  </a>
+</div>
+
       </motion.div>
 
       {/* Right Side - Image */}

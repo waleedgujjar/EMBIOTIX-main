@@ -1,9 +1,9 @@
 "use client";
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { FaLinkedin } from "react-icons/fa";
+import React from "react";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
+import { motion } from "framer-motion";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -12,129 +12,164 @@ const teamMembers = [
   {
     name: "Ghufran Khan",
     role: "CEO",
-    description:
-      "Leading innovation and setting strategic direction for the company.",
+    description: "Leading innovation and setting strategic direction for the company. Passionate about building high-performing teams and driving business growth through technology and vision.",
+    expertise: ["Strategic Planning", "Business Development", "Team Leadership"],
+    experience: "10+ years in Tech Industry",
     img: "/images/CEO.jpeg",
     linkedin: "https://www.linkedin.com/in/ghufran-khan",
+    github: "#"
   },
   {
     name: "Ahmad Nauman",
     role: "CTO",
-    description: "Designing intelligent systems that drive business growth.",
+    description: "Designing intelligent systems that drive business growth. Expert in scalable architectures and emerging technologies.",
+    expertise: ["System Architecture", "AI/ML", "Cloud Infrastructure"],
+    experience: "8+ years in Software Development",
     img: "/images/CTO.jpg",
     linkedin: "#",
+    github: "#"
   },
   {
     name: "Muhammad Asjad",
     role: "CMO",
-    description:
-      "Leads marketing strategies to grow brand visibility and drive customer engagement.",
+    description: "Leads marketing strategies to grow brand visibility and drive customer engagement. Skilled in digital marketing and creative campaigns.",
+    expertise: ["Digital Marketing", "Brand Strategy", "Content Creation"],
+    experience: "7+ years in Marketing",
     img: "/images/CMO.jpeg",
     linkedin: "https://www.linkedin.com/in/muhmmad-asjad",
+    github: "#"
   },
   {
     name: "Humza Jaffar",
     role: "UI/UX Lead",
-    description:
-      "Designs intuitive and engaging user experiences that blend aesthetics with functionality.",
+    description: "Designs intuitive and engaging user experiences that blend aesthetics with functionality. Focused on user-centric design and accessibility.",
+    expertise: ["UI/UX Design", "Prototyping", "User Research"],
+    experience: "6+ years in UI/UX",
     img: "/images/humza.jpg",
     linkedin: "https://www.linkedin.com/in/humza-makhfi-85a5021ab",
+    github: "#"
   },
 ];
 
 export default function TeamSection() {
-  const [selected, setSelected] = useState<null | typeof teamMembers[0]>(null);
-
   return (
-    <div className="bg-[#0f0f0f] px-6 py-12 md:px-16" id="team">
-      <h2 className="text-white text-3xl md:text-4xl text-center mb-8">
+    <div className="bg-[#0f0f0f] px-2 py-8 md:px-8" id="team">
+      <h2 className="text-white text-2xl md:text-3xl text-center mb-6">
         Meet Our Expert Team
       </h2>
-
       <Swiper
         modules={[Navigation, Pagination]}
-        spaceBetween={20}
-        slidesPerView={1}
+        spaceBetween={16}
+        slidesPerView={4}
         navigation
         pagination={{ clickable: true }}
         breakpoints={{
-          640: { slidesPerView: 1 },
-          768: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
-          1280: { slidesPerView: 4 },
+          320: { slidesPerView: 1 },
+          640: { slidesPerView: 2 },
+          1024: { slidesPerView: 4 },
         }}
         className="team-carousel"
       >
         {teamMembers.map((member, idx) => (
           <SwiperSlide key={idx}>
-            <div
-              className="relative group cursor-pointer rounded-2xl overflow-hidden shadow-md hover:shadow-[0_0_20px_#89f43650] transition-all duration-300 w-full h-[350px]"
-              onMouseEnter={() => setSelected(member)}
-              onMouseLeave={() => setSelected(null)}
-              onClick={() => setSelected(member)}
-            >
-              <img
-                src={member.img}
-                alt={member.name}
-                className="w-full h-full object-cover object-top transition-all duration-300 group-hover:scale-110 group-hover:blur-sm"
-              />
-              <div className="absolute inset-0 bg-black/60 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center text-center px-4">
-                <p className="text-white text-xl font-semibold mb-1">
-                  {member.name}
-                </p>
-                <p className="text-[#89f436] text-sm font-medium">
-                  {member.role}
-                </p>
-                <p className="text-[#b9b3b3] text-xs mt-2">
-                  {member.description}
-                </p>
+            <div className="w-full h-[350px] [perspective:1000px]">
+              <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d hover:rotate-y-180">
+                {/* Front Side */}
+                <div className="absolute w-full h-full backface-hidden">
+                  <img
+                    src={member.img}
+                    alt={member.name}
+                    className="w-full h-full object-cover rounded-2xl"
+                  />
+                </div>
+                {/* Back Side */}
+                <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-[#161616] text-white p-3 flex flex-col items-center justify-center rounded-2xl border border-[#89f436] shadow-[0_0_10px_rgba(137,244,54,0.2)]">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="flex flex-col items-center w-full"
+                  >
+                    <motion.h1
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.1 }}
+                      className="text-base font-bold uppercase mb-1 text-[#89f436] text-center"
+                    >
+                      {member.name}
+                    </motion.h1>
+                    <motion.p
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.15 }}
+                      className="text-white/80 text-xs mb-2 text-center"
+                    >
+                      {member.role}
+                    </motion.p>
+                    <motion.p
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2 }}
+                      className="text-xs text-center text-white/60 mb-2"
+                    >
+                      {member.description}
+                    </motion.p>
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.25 }}
+                      className="mb-2 w-full"
+                    >
+                      <p className="text-[#89f436] text-[10px] mb-1 text-center">Expertise:</p>
+                      <div className="flex flex-wrap gap-1 justify-center">
+                        {member.expertise.map((skill, i) => (
+                          <span
+                            key={i}
+                            className="bg-[#89f436]/10 text-[#89f436] text-[10px] px-1.5 py-0.5 rounded-full"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </motion.div>
+                    <motion.p
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3 }}
+                      className="text-white/60 text-[10px] mb-2 text-center"
+                    >
+                      {member.experience}
+                    </motion.p>
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.35 }}
+                      className="flex gap-3 text-[#89f436] justify-center"
+                    >
+                      <a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-white transition-colors"
+                      >
+                        <FaLinkedin size={16} />
+                      </a>
+                      <a
+                        href={member.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-white transition-colors"
+                      >
+                        <FaGithub size={16} />
+                      </a>
+                    </motion.div>
+                  </motion.div>
+                </div>
               </div>
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
-
-      <AnimatePresence>
-        {selected && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
-            onClick={() => setSelected(null)}
-          >
-            <motion.div
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.8 }}
-              onClick={(e) => e.stopPropagation()}
-              className="bg-[#0f0f0f] rounded-xl p-6 w-full max-w-md text-white border border-[#364C09] shadow-[0_0_20px_#89f43650]"
-            >
-              <div className="flex flex-col items-center gap-4">
-                <img
-                  src={selected.img}
-                  alt={selected.name}
-                  className="w-[200px] h-[200px] object-cover object-top rounded-full border-4 border-[#171F05]"
-                />
-                <span className="text-[#89f436] bg-[#171F05] px-3 py-1 text-sm rounded-full border border-[#364C09]">
-                  Team
-                </span>
-                <h3 className="text-2xl font-bold">{selected.name}</h3>
-                <p className="text-[#89f436] font-medium">{selected.role}</p>
-                <p className="text-[#b9b3b3] text-center">{selected.description}</p>
-                <a
-                  href={selected.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#89f436] hover:text-white mt-2"
-                >
-                  <FaLinkedin size={24} />
-                </a>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
