@@ -16,11 +16,19 @@ export default function Footer() {
                 Driving digital transformation with AI, ML, IoT and innovative tech solutions
               </p>
               <div className="flex gap-[10px]">
-                <Facebook />
-                <Twitter />
-                <Linkedin />
-                <Instagram />
-              </div>
+  <span className="transition-all duration-300 text-black bg-[#89f436] hover:bg-transparent hover:text-[#89f436] hover:border-[#89f436] hover:shadow-md hover:scale-105 border border-[#89f436] rounded-full p-2 cursor-pointer">
+    <Facebook />
+  </span>
+  <span className="transition-all duration-300 text-black bg-[#89f436] hover:bg-transparent hover:text-[#89f436] hover:border-[#89f436] hover:shadow-md hover:scale-105 border border-[#89f436] rounded-full p-2 cursor-pointer">
+    <Twitter />
+  </span>
+  <span className="transition-all duration-300 text-black bg-[#89f436] hover:bg-transparent hover:text-[#89f436] hover:border-[#89f436] hover:shadow-md hover:scale-105 border border-[#89f436] rounded-full p-2 cursor-pointer">
+    <Linkedin />
+  </span>
+  <span className="transition-all duration-300 text-black bg-[#89f436] hover:bg-transparent hover:text-[#89f436] hover:border-[#89f436] hover:shadow-md hover:scale-105 border border-[#89f436] rounded-full p-2 cursor-pointer">
+    <Instagram />
+  </span>
+</div>
             </div>
           </div>
           <div className="flex md:flex-row flex-col gap-[60px] text-white lg:w-[754px]">
@@ -49,7 +57,7 @@ export default function Footer() {
                   style={{ fontFamily: "Melbourne" }}
                 />
                 <button
-                  className="text-black md:text-[16px] text-[14px] bg-[#89f436] md:px-[44.5px] md:py-[15.5px] md:w-[120px] md:h-[50px] px-[20px] py-[9px] h-[40px] w-[80px] rounded-br-[8px] rounded-tr-[8px] transition-all duration-300 hover:bg-transparent hover:text-[#89f436] hover:border-[#89f436] border border-[#89f436]"
+                  className="text-black md:text-[16px] text-[14px] bg-[#89f436] md:px-[44.5px] md:py-[15.5px] md:w-[120px] md:h-[50px] px-[20px] py-[9px] h-[40px] w-[80px] rounded-br-[8px] rounded-tr-[8px] transition-all duration-300 hover:bg-transparent hover:text-[#89f436] hover:border-[#89f436] border border-[#89f436] cursor-pointer"
                   style={{ fontFamily: "Melbourne" }}
                 >
                   Join
