@@ -16,19 +16,19 @@ export default function Footer() {
                 Driving digital transformation with AI, ML, IoT and innovative tech solutions
               </p>
               <div className="flex gap-[10px]">
-  <span className="transition-all duration-300 text-black bg-[#89f436] hover:bg-transparent hover:text-[#89f436] hover:border-[#89f436] hover:shadow-md hover:scale-105 border border-[#89f436] rounded-full p-2 cursor-pointer">
-    <Facebook />
-  </span>
-  <span className="transition-all duration-300 text-black bg-[#89f436] hover:bg-transparent hover:text-[#89f436] hover:border-[#89f436] hover:shadow-md hover:scale-105 border border-[#89f436] rounded-full p-2 cursor-pointer">
-    <Twitter />
-  </span>
-  <span className="transition-all duration-300 text-black bg-[#89f436] hover:bg-transparent hover:text-[#89f436] hover:border-[#89f436] hover:shadow-md hover:scale-105 border border-[#89f436] rounded-full p-2 cursor-pointer">
-    <Linkedin />
-  </span>
-  <span className="transition-all duration-300 text-black bg-[#89f436] hover:bg-transparent hover:text-[#89f436] hover:border-[#89f436] hover:shadow-md hover:scale-105 border border-[#89f436] rounded-full p-2 cursor-pointer">
-    <Instagram />
-  </span>
-</div>
+                <span className="transition-all duration-300 text-black bg-[#89f436] hover:bg-transparent hover:text-[#89f436] hover:border-[#89f436] hover:shadow-md hover:scale-105 border border-[#89f436] rounded-full p-2 cursor-pointer">
+                  <Facebook />
+                </span>
+                <span className="transition-all duration-300 text-black bg-[#89f436] hover:bg-transparent hover:text-[#89f436] hover:border-[#89f436] hover:shadow-md hover:scale-105 border border-[#89f436] rounded-full p-2 cursor-pointer">
+                  <Twitter />
+                </span>
+                <span className="transition-all duration-300 text-black bg-[#89f436] hover:bg-transparent hover:text-[#89f436] hover:border-[#89f436] hover:shadow-md hover:scale-105 border border-[#89f436] rounded-full p-2 cursor-pointer">
+                  <Linkedin />
+                </span>
+                <span className="transition-all duration-300 text-black bg-[#89f436] hover:bg-transparent hover:text-[#89f436] hover:border-[#89f436] hover:shadow-md hover:scale-105 border border-[#89f436] rounded-full p-2 cursor-pointer">
+                  <Instagram />
+                </span>
+              </div>
             </div>
           </div>
           <div className="flex md:flex-row flex-col gap-[60px] text-white lg:w-[754px]">
@@ -40,7 +40,12 @@ export default function Footer() {
                 <p className="text-[20px]" style={{ fontFamily: "Melbourne" }}>{section.title}</p>
                 <div className="flex flex-col gap-[24px]">
                   {section.links.map((link, idx) => (
-                    <a key={idx} href={link.href} className="text-[16px] relative after:content-[''] after:absolute after:left-0 after:bottom-[-3px] after:w-0 after:h-[2px] after:bg-[#89f436] after:transition-all after:duration-300 hover:after:w-full" style={{ fontFamily: "Melbourne" }}>
+                    <a
+                      key={idx}
+                      href={link.href}
+                      className="text-[16px] relative inline-block after:content-[''] after:absolute after:left-0 after:right-0 after:mx-auto after:bottom-[-3px] after:w-0 after:h-[2px] after:bg-[#89f436] after:transition-all after:duration-300 hover:after:w-full"
+                      style={{ fontFamily: "Melbourne" }}
+                    >
                       {link.label}
                     </a>
                   ))}

@@ -57,24 +57,23 @@ export default function ClientReviews() {
           pagination={false}
           modules={[Pagination]}
           spaceBetween={30}
-          slidesPerView={1}
-          centeredSlides={true}
-          initialSlide={2}
-          loop={true}
-          breakpoints={{
-            768: { slidesPerView: 2, centeredSlides: false },
-            1200: { slidesPerView: 3, centeredSlides: true },
-          }}
+          slidesPerView={3}
+          centeredSlides={false} // Always show all 3 cards, no centering
+          loop={false}
           onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           className="mySwiper"
         >
           {client_reviews.map((review, index) => (
-            <SwiperSlide key={index} className="flex justify-center">
+            <SwiperSlide key={index} className="flex justify-center cursor-pointer">
               <div
-                className={`p-[24px] md:h-[357px] h-[300px] rounded-[10px] border border-[#333] rounded-tl-[40px] rounded-br-[40px] ${
+                className={`p-[24px] md:h-[357px] h-[300px] rounded-[10px] border border-[#333] rounded-tl-[40px] rounded-br-[40px] transition-all duration-300 ${
                   index === activeIndex ? "bg-[#e6ffcd]" : "bg-[#161616]"
                 }`}
+                onClick={() => {
+                  setActiveIndex(index);
+                  swiperRef.current?.slideTo(index, 0, true);
+                }}
               >
                 <div className="flex gap-[6px]">
                   <img src={review.img} alt="Customer Image" />
@@ -115,7 +114,10 @@ export default function ClientReviews() {
       <div className="flex justify-center items-center mt-[32px]">
         <Scroller2
           activeIndex={activeIndex}
-          setActiveIndex={(index) => swiperRef?.current?.slideToLoop(index)}
+          setActiveIndex={(index) => {
+            setActiveIndex(index);
+            swiperRef.current?.slideTo(index, 0, true);
+          }}
         />
       </div>
     </div>
