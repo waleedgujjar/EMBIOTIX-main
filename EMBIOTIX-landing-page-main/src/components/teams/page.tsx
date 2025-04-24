@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -42,20 +43,41 @@ export default function TeamGrid() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: idx * 0.1, duration: 0.4 }}
-            className="bg-[#1a1a1a] w-full max-w-[296px] h-auto mx-auto p-6 rounded-xl border border-[#89f436]/30 text-left flex flex-col items-start shadow-sm"
+            className="perspective"
           >
-            <Image
-              src={person.img}
-              alt={person.name}
-              width={64}
-              height={64}
-              className="rounded-full object-cover object-top w-16 h-16 mb-4"
-            />
-            <h3 className="text-white font-bold text-base">{person.name}</h3>
-            <p className="text-white text-sm font-medium">{person.role}</p>
-            <p className="text-[#d1d1d1] text-xs leading-relaxed mt-2 opacity-70">
-              {person.desc}
-            </p>
+            <div className="relative w-full max-w-[296px] h-[360px] mx-auto">
+              <div className="group transition-transform duration-500 transform-style-preserve-3d w-full h-full hover:rotate-y-180">
+                {/* Front */}
+                <div className="absolute inset-0 rounded-xl overflow-hidden backface-hidden">
+                  <Image
+                    src={person.img}
+                    alt={person.name}
+                    fill
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+
+                {/* Back */}
+                <div className="absolute inset-0 bg-[#1a1a1a] border border-[#89f436]/30 rounded-xl p-6 transform rotate-y-180 backface-hidden flex flex-col items-start text-left shadow-sm">
+                  <Image
+                    src={person.img}
+                    alt={person.name}
+                    width={64}
+                    height={64}
+                    className="rounded-full object-cover object-top w-16 h-16 mb-4"
+                  />
+                  <h3 className="text-white font-bold text-base">
+                    {person.name}
+                  </h3>
+                  <p className="text-white text-sm font-medium">
+                    {person.role}
+                  </p>
+                  <p className="text-[#d1d1d1] text-xs leading-relaxed mt-2 opacity-70">
+                    {person.desc}
+                  </p>
+                </div>
+              </div>
+            </div>
           </motion.div>
         ))}
       </div>
