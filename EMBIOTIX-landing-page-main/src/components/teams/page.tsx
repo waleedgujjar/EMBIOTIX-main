@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import React, { useState } from "react";
 
 const team = [
   {
@@ -31,6 +32,14 @@ const team = [
 ];
 
 export default function TeamGrid() {
+  // Track which card is flipped (by index)
+  const [flipped, setFlipped] = useState<number | null>(null);
+
+  // Detect if device is touch (mobile/tablet)
+  const isTouchDevice = () =>
+    typeof window !== "undefined" &&
+    ("ontouchstart" in window || navigator.maxTouchPoints > 0);
+
   return (
     <section className="bg-[#0f0f0f] px-6 py-12" id="team">
       <h2 className="text-white text-3xl md:text-4xl text-center mb-10">
@@ -46,7 +55,30 @@ export default function TeamGrid() {
             className="perspective"
           >
             <div className="relative w-full max-w-[296px] h-[360px] mx-auto">
-              <div className="group transition-transform duration-500 transform-style-preserve-3d w-full h-full hover:rotate-y-180">
+              <div
+                className={`group transition-transform duration-500 transform-style-preserve-3d w-full h-full
+                  ${flipped === idx ? "rotate-y-180" : ""}
+                `}
+                // On touch devices, flip on click/tap
+                onClick={() => {
+                  if (isTouchDevice()) {
+                    setFlipped(flipped === idx ? null : idx);
+                  }
+                }}
+                // On mouse leave, unflip (for desktop)
+                onMouseLeave={() => {
+                  if (!isTouchDevice()) {
+                    setFlipped(null);
+                  }
+                }}
+                // On mouse enter, flip (for desktop)
+                onMouseEnter={() => {
+                  if (!isTouchDevice()) {
+                    setFlipped(idx);
+                  }
+                }}
+                style={{ cursor: "pointer" }}
+              >
                 {/* Front */}
                 <div className="absolute inset-0 rounded-xl overflow-hidden backface-hidden">
                   <Image
@@ -56,7 +88,6 @@ export default function TeamGrid() {
                     className="object-cover w-full h-full"
                   />
                 </div>
-
                 {/* Back */}
                 <div className="absolute inset-0 bg-[#1a1a1a] border border-[#89f436]/30 rounded-xl p-6 transform rotate-y-180 backface-hidden flex flex-col items-start text-left shadow-sm">
                   <Image
