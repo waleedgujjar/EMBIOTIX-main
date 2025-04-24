@@ -31,13 +31,13 @@ export default function ClientReviews() {
     {
       name: "Angel Mango",
       description:
-        "You can tell they care about what they do, always responsive, thoughtful, and genuinely invested in our project’s success.",
+        "You can tell they care about what they do, always responsive, thoughtful, and genuinely invested in our project’s success.",
       img: "/images/customer2.png",
     },
   ];
 
   return (
-    <div className="bg-[#0f0f0f] md:px-[80px] md:pt-[60px] px-[40px] py-[30px]">
+    <div className="bg-[#0f0f0f] md:px-[80px] md:pt-[60px] px-[20px] py-[30px]">
       <div className="flex flex-col justify-center items-center">
         <button className="w-[111px] h-[28px] flex justify-center items-center text-[#89f436] bg-[#171F05] border border-[#364C09] rounded-full text-[14px]">
           Testimonials
@@ -57,9 +57,22 @@ export default function ClientReviews() {
           pagination={false}
           modules={[Pagination]}
           spaceBetween={30}
-          slidesPerView={3}
-          centeredSlides={false} // Always show all 3 cards, no centering
           loop={false}
+          centeredSlides={false}
+          breakpoints={{
+            0: {
+              slidesPerView: 1,
+            },
+            640: {
+              slidesPerView: 1.2,
+            },
+            768: {
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+          }}
           onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           className="mySwiper"
@@ -67,7 +80,7 @@ export default function ClientReviews() {
           {client_reviews.map((review, index) => (
             <SwiperSlide key={index} className="flex justify-center cursor-pointer">
               <div
-                className={`p-[24px] md:h-[357px] h-[300px] rounded-[10px] border border-[#333] rounded-tl-[40px] rounded-br-[40px] transition-all duration-300 ${
+                className={`p-[24px] w-full max-w-[360px] md:h-[357px] h-auto rounded-[10px] border border-[#333] rounded-tl-[40px] rounded-br-[40px] transition-all duration-300 ${
                   index === activeIndex ? "bg-[#e6ffcd]" : "bg-[#161616]"
                 }`}
                 onClick={() => {
@@ -76,7 +89,7 @@ export default function ClientReviews() {
                 }}
               >
                 <div className="flex gap-[6px]">
-                  <img src={review.img} alt="Customer Image" />
+                  <img src={review.img} alt="Customer Image" className="w-[50px] h-[50px]" />
                   <div className="flex flex-col gap-[6px]">
                     <p
                       className={`md:text-[24px] text-[16px] ${
@@ -92,15 +105,15 @@ export default function ClientReviews() {
                     </div>
                   </div>
                 </div>
-                <div className="flex flex-col justify-between h-3/4">
+                <div className="flex flex-col justify-between mt-4">
                   <p
-                    className={`lg:text-[24px] text-[16px] xl:mt-[32px] mt-[10px] ${
+                    className={`lg:text-[24px] text-[16px] ${
                       index === activeIndex ? "text-[#000]" : "text-[#fff]"
                     }`}
                   >
                     {review.description}
                   </p>
-                  <div className="flex justify-end">
+                  <div className="flex justify-end mt-4">
                     <QuoteRight />
                   </div>
                 </div>
