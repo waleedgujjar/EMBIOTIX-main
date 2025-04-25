@@ -99,7 +99,11 @@ export default function Services() {
             <img
               src={service.image}
               alt={service.alt}
-              className="w-[64px] h-[64px] transition-transform duration-300 group-hover:scale-110"
+              className={`transition-transform duration-300 group-hover:scale-110 ${
+                service.title === "UI/UX design"
+                  ? "w-[62px] h-[50px]"
+                  : "w-[64px] h-[64px]"
+              }`}
             />
             <div className="flex flex-col gap-[10px]">
               <p className="text-white text-[24px] font-normal group-hover:text-[#89f436] transition-colors duration-300">
@@ -118,7 +122,7 @@ export default function Services() {
         <Swiper
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           modules={[Navigation]}
-          spaceBetween={0} // removed spacing between slides
+          spaceBetween={0}
           slidesPerView={1}
           loop={true}
           breakpoints={{
@@ -140,7 +144,11 @@ export default function Services() {
                 <img
                   src={service.image}
                   alt={service.alt}
-                  className="w-[64px] h-[64px] transition-transform duration-300 hover:scale-110"
+                  className={`transition-transform duration-300 hover:scale-110 ${
+                    service.title === "UI/UX design"
+                      ? "w-[62px] h-[50px]"
+                      : "w-[64px] h-[64px]"
+                  }`}
                 />
                 <div className="flex flex-col gap-[10px]">
                   <p className="text-white text-[24px] font-normal hover:text-[#89f436] transition-colors duration-300">

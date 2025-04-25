@@ -126,7 +126,7 @@ export default function Faqs() {
 
         <Link href="#contact">
         <button
-  className="md:w-[123px] h-[40px] w-full bg-[#171f05] text-[16px] border border-[#364c09] text-[#89f436] rounded-[10px] hover:bg-transparent hover:text-[#171f05] cursor-pointer transition-all duration-200"
+  className="w-full md:w-auto h-[48px] px-[20px] md:px-[24px] bg-[#171f05] text-[16px] border border-[#364c09] text-[#89f436] rounded-[10px] hover:bg-transparent hover:text-[#171f05] cursor-pointer transition-all duration-200"
   style={{ fontFamily: "Melbourne" }}
 >
   Get in Touch
