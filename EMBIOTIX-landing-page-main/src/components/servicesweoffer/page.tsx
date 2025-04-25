@@ -61,10 +61,7 @@ export default function Services() {
   ];
 
   return (
-    <div
-      className="bg-[#0f0f0f] md:px-[80px] md:py-[60px] px-[40px] py-[30px]"
-      id="services"
-    >
+    <div className="bg-[#0f0f0f] px-4 sm:px-6 md:px-16 lg:px-20 py-10 md:py-16" id="services">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -72,20 +69,19 @@ export default function Services() {
         viewport={{ once: true }}
         className="flex flex-col justify-center items-center"
       >
-        <p className="w-[82px] h-[28px] flex justify-center items-center text-[#89f436] bg-[#171F05] border border-[#364C09] rounded-full text-[14px]">
+        <p className="w-fit px-4 py-1 text-[#89f436] bg-[#171F05] border border-[#364C09] rounded-full text-[13px] sm:text-[14px]">
           Services
         </p>
-        <p className="text-white mt-[12px] text-[24px] md:text-[34px] lg:text-[40px] text-center">
+        <p className="text-white mt-3 text-[22px] sm:text-[28px] md:text-[34px] lg:text-[40px] text-center">
           Services we Offer
         </p>
-        <p className="text-[#7a7b7a] md:text-[20px] text-[16px] mt-[20px] text-center max-w-[768px]">
-          We provide cutting-edge AI, ML, IoT, and development services to help
-          businesses innovate and grow.
+        <p className="text-[#7a7b7a] text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] mt-5 text-center max-w-[768px]">
+          We provide cutting-edge AI, ML, IoT, and development services to help businesses innovate and grow.
         </p>
       </motion.div>
 
-      {/* Grid Layout */}
-      <div className="hidden lg:grid mt-[40px] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-[32px] gap-[12px]">
+      {/* Grid Layout for desktop/tablet */}
+      <div className="hidden lg:grid mt-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((service, index) => (
           <motion.div
             key={index}
@@ -94,22 +90,20 @@ export default function Services() {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
             viewport={{ once: true, amount: 0.2 }}
-            className="group cursor-pointer bg-[#161616] border border-[#333] p-[32px] flex flex-col gap-[24px] rounded-[12px] shadow-md min-h-[400px] transition-all duration-500"
+            className="group cursor-pointer bg-[#161616] border border-[#333] p-6 flex flex-col gap-6 rounded-[12px] shadow-md min-h-[400px] transition-all duration-500"
           >
             <img
               src={service.image}
               alt={service.alt}
               className={`transition-transform duration-300 group-hover:scale-110 ${
-                service.title === "UI/UX design"
-                  ? "w-[62px] h-[50px]"
-                  : "w-[64px] h-[64px]"
+                service.title === "UI/UX design" ? "w-[62px] h-[50px]" : "w-[64px] h-[64px]"
               }`}
             />
-            <div className="flex flex-col gap-[10px]">
-              <p className="text-white text-[24px] font-normal group-hover:text-[#89f436] transition-colors duration-300">
+            <div className="flex flex-col gap-2">
+              <p className="text-white text-[20px] md:text-[24px] font-normal group-hover:text-[#89f436] transition-colors duration-300">
                 {service.title}
               </p>
-              <p className="text-[#b9b3b3] text-[16px] font-normal">
+              <p className="text-[#b9b3b3] text-[14px] md:text-[16px]">
                 {service.description}
               </p>
             </div>
@@ -118,18 +112,18 @@ export default function Services() {
       </div>
 
       {/* Swiper for Mobile */}
-      <div className="lg:hidden mt-[40px] relative">
+      <div className="lg:hidden mt-10 relative">
         <Swiper
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           modules={[Navigation]}
-          spaceBetween={0}
+          spaceBetween={12}
           slidesPerView={1}
           loop={true}
           breakpoints={{
+            480: { slidesPerView: 1.05 },
             640: { slidesPerView: 1.2 },
             768: { slidesPerView: 2 },
           }}
-          className="mySwiper"
         >
           {services.map((service, index) => (
             <SwiperSlide key={index}>
@@ -139,22 +133,20 @@ export default function Services() {
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
                 viewport={{ once: true, amount: 0.2 }}
-                className="cursor-pointer bg-[#161616] border border-[#333] p-[32px] flex flex-col gap-[24px] rounded-[12px] shadow-md min-h-[400px] transition-all duration-500"
+                className="cursor-pointer bg-[#161616] border border-[#333] p-6 flex flex-col gap-6 rounded-[12px] shadow-md min-h-[400px] transition-all duration-500"
               >
                 <img
                   src={service.image}
                   alt={service.alt}
                   className={`transition-transform duration-300 hover:scale-110 ${
-                    service.title === "UI/UX design"
-                      ? "w-[62px] h-[50px]"
-                      : "w-[64px] h-[64px]"
+                    service.title === "UI/UX design" ? "w-[62px] h-[50px]" : "w-[64px] h-[64px]"
                   }`}
                 />
-                <div className="flex flex-col gap-[10px]">
-                  <p className="text-white text-[24px] font-normal hover:text-[#89f436] transition-colors duration-300">
+                <div className="flex flex-col gap-2">
+                  <p className="text-white text-[20px] sm:text-[22px] font-normal hover:text-[#89f436] transition-colors duration-300">
                     {service.title}
                   </p>
-                  <p className="text-[#b9b3b3] text-[16px] font-normal">
+                  <p className="text-[#b9b3b3] text-[14px] sm:text-[16px]">
                     {service.description}
                   </p>
                 </div>
@@ -164,7 +156,7 @@ export default function Services() {
         </Swiper>
 
         {/* Navigation Arrows */}
-        <div className="flex justify-center gap-[10px] mt-[20px]">
+        <div className="flex justify-center gap-4 mt-6">
           <button
             type="button"
             aria-label="Previous Slide"
